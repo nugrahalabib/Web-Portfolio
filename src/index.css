@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+  
+  --color-brand-bg: #FFFFFF;
+  --color-brand-panel: #F5F5F0;
+  --color-brand-text-primary: #0B0B0B;
+  --color-brand-text-secondary: #555555;
+  --color-brand-border: #D9D9D9;
+  --color-brand-red: #E53935;
+  --color-brand-black: #050505;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-text-primary);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-brand-bg);
+  border-left: 1px solid var(--color-brand-border);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-text-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-red);
+}
+
+/* Scanning Line Animation */
+@keyframes scan {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.animate-scan {
+  animation: scan 6s linear infinite;
+}
+
+/* Subtle Floating Mascot */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Shadow Expansion/Shrinking Animation */
+@keyframes shadow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: scale(0.8);
+    opacity: 0.05;
+  }
+}
+
+.animate-shadow {
+  animation: shadow 5s ease-in-out infinite;
+}
+
+/* Grid overlay background */
+.bg-grid-lines {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(217, 217, 217, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 217, 217, 0.4) 1px, transparent 1px);
+}
+
+.bg-grid-lines-dark {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Noise background filter */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+}
+
+/* Responsive white fade cover centered around the mascot to mask grid lines */
+.hero-mascot-mask {
+  background: radial-gradient(circle at 50% 85%, #FFFFFF 20%, rgba(255, 255, 255, 0.9) 45%, rgba(255, 255, 255, 0) 80%);
+}
+
+@media (min-width: 1024px) {
+  .hero-mascot-mask {
+    background: radial-gradient(circle at 75% 50%, #FFFFFF 22%, rgba(255, 255, 255, 0.95) 45%, rgba(255, 255, 255, 0.4) 65%, rgba(255, 255, 255, 0) 88%);
+  }
+}
+
+/* Infinite Scrolling Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
