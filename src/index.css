@@ -143,3 +143,22 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* ────────────────────────────────────────────────────────────────
+   Text selectability
+   The UI applies Tailwind's `select-none` very broadly (headings, body
+   copy, nav, cards, dossier fields), which blocked visitors from
+   selecting / copying content. This rule re-enables selection site-wide
+   by neutralizing `select-none` everywhere, so all text is copyable.
+   `!important` guarantees it wins over the layered Tailwind utility.
+   ──────────────────────────────────────────────────────────────── */
+.select-none {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Branded selection highlight — red accent so copying feels designed. */
+::selection {
+  background-color: var(--color-brand-red);
+  color: #ffffff;
+}
